@@ -14,8 +14,8 @@ export function useNotes() {
   const loading = ref(false);
   const error = ref<string | null>(null);
 
-  // Base de la API (configurada en runtime)
-  const apiBase = useRuntimeConfig().public.apiBase.replace(/\/+$/, "");
+  // Base de la API (configurada con variable de entorno)
+  const apiBase = (import.meta.env.VITE_API_BASE || "").replace(/\/+$/, "");
 
   // Carga todas las notas desde el backend
   const fetchNotes = async () => {
